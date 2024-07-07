@@ -17,6 +17,7 @@ export default function Project({
   const inputValue = useRef(null)
 
   function handleAddTask() {
+    if (inputValue.current.value.trim() === "") return
     onAddTask(project, inputValue.current.value)
     inputValue.current.value = ""
   }

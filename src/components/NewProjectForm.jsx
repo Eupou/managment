@@ -1,11 +1,22 @@
 import { useRef } from "react"
+import Modal from "./Modal"
 
 export default function NewProjectForm({ onClose, addProject }) {
   const title = useRef()
   const description = useRef()
   const dueDate = useRef()
+  const modal = useRef(null)
 
   function handleButtonClick() {
+    if (
+      title.current.value.trim() === "" ||
+      description.current.value.trim() === "" ||
+      dueDate.current.value.trim() === ""
+    ) {
+      modal.current.open()
+      return
+    }
+
     addProject({
       title: title.current.value,
       description: description.current.value,
@@ -17,6 +28,7 @@ export default function NewProjectForm({ onClose, addProject }) {
 
   return (
     <div className="grow flex justify-center">
+      <Modal ref={modal}>You left something empty</Modal>
       <div className="w-[80%] mt-24">
         <menu className="flex flex-row-reverse">
           <button

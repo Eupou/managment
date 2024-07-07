@@ -1,3 +1,4 @@
+import Modal from "./components/Modal"
 import Sidebar from "./components/Sidebar"
 import View from "./components/View"
 import { useState } from "react"
@@ -52,7 +53,6 @@ function App() {
       })
     })
   }
-  console.log(projects)
 
   function handleAddTask(project, task) {
     setProjects((prevProjects) => {
